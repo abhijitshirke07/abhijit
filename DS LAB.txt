@@ -1,3 +1,112 @@
+========================================================
+matrix
+0   1  2
+-1  0  3
+-2 -3  0
+===================================================
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    int positive = 1;
+    int n;
+    cout<<"Enter the dimension of array: "<<endl;
+    cin>>n;
+    int negative = -1;
+    int arr[n][n];
+    for(int i = 0; i < n; i++){
+      for(int j = 0; j < n; j++){
+        if(i == j){
+          arr[i][j] = 0;
+        }
+        else if(i>j){
+          arr[i][j] = negative;
+          negative--;
+        }
+        else{
+          arr[i][j] = positive;
+          positive++;
+        }
+
+      }
+    }
+    cout<<"\n";
+    for(int i = 0; i < n; i++){
+      for(int j = 0; j < n; j++){
+        cout<<setw(5)<<arr[i][j]<<" ";
+      }
+      cout<<""<<endl;
+    }
+    return 0;
+}
+
+=============================================
+circular matrix /spiral matrix
+======================================
+#include <iostream>
+using namespace std;
+
+void fillCircularMatrix(int n, int arr[][10]) {
+    int num = 1;
+    int startRow = 0, startCol = 0, endRow = n - 1, endCol = n - 1;
+
+    while (startRow <= endRow && startCol <= endCol) {
+        // Fill the top row
+        for (int i = startCol; i <= endCol; ++i)
+            arr[startRow][i] = num++;
+
+        // Fill the right column
+        for (int i = startRow + 1; i <= endRow; ++i)
+            arr[i][endCol] = num++;
+
+        // Fill the bottom row
+        if (startRow < endRow) {
+            for (int i = endCol - 1; i >= startCol; --i)
+                arr[endRow][i] = num++;
+        }
+
+        // Fill the left column
+        if (startCol < endCol) {
+            for (int i = endRow - 1; i > startRow; --i)
+                arr[i][startCol] = num++;
+        }
+
+        // Move to the inner matrix
+        startRow++;
+        startCol++;
+        endRow--;
+        endCol--;
+    }
+}
+
+int main() {
+    int n;
+
+    cout << "Enter the dimension of the matrix: ";
+    cin >> n;
+
+    if (n <= 0 || n > 10) {
+        cout << "Invalid dimension. Please enter a positive integer less than or equal to 10." << endl;
+        return 1;
+    }
+
+    int arr[10][10];
+
+    fillCircularMatrix(n, arr);
+
+    cout << "Circular Matrix:" << endl;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            cout << arr[i][j] << "\t";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
 ===================================================================================================================
 Implementation on stack
 =====================================================================================================================
@@ -1525,6 +1634,405 @@ int main() {
         std::cerr << "Error opening the file for reading." << std::endl;
         return 1; // Return an error code
     }
+
+    return 0;
+}
+
+=================================================
+find all reachable vertex from A graph vertex 
+===================================================
+Find All Reachable Vertices from A Graph Vertex.cpp
+#include <iostream>
+
+using namespace std;
+
+struct Node
+{
+    int vertex, weight;
+    Node* next;
+
+    Node(int v, int w) : vertex(v), weight(w), next(nullptr) {}
+};
+
+class UndirectedGraph
+{
+public:
+    UndirectedGraph(int numVertices) : N(numVertices)
+    {
+        adjList = new Node*[N]();
+    }
+
+    void addEdge(int from, int to, int weight)
+    {
+        Node* newNode = new Node(to, weight);
+        newNode->next = adjList[from];
+        adjList[from] = newNode;
+
+        // Add the reverse edge from 'to' to 'from'
+        Node* reverseNode = new Node(from, weight);
+        reverseNode->next = adjList[to];
+        adjList[to] = reverseNode;
+    }
+
+    void findReachableVertices(int startVertex)
+    {
+        bool visited[N] = {false};
+        visited[startVertex] = true;
+
+        cout << "Reachable vertices from vertex " << startVertex << ": ";
+        for (int i = 0; i < N; ++i)
+        {
+            if (visited[i])
+            {
+                cout << i << " ";
+                Node* currentNode = adjList[i];
+                while (currentNode)
+                {
+                    int neighbor = currentNode->vertex;
+                    visited[neighbor] = true;
+                    currentNode = currentNode->next;
+                }
+            }
+        }
+        cout << endl;
+    }
+
+    ~UndirectedGraph()
+    {
+        for (int i = 0; i < N; ++i)
+        {
+            Node* current = adjList[i];
+            while (current)
+            {
+                Node* temp = current;
+                current = current->next;
+                delete temp;
+            }
+        }
+        delete[] adjList;
+    }
+
+private:
+    int N;
+    Node** adjList;
+};
+
+int main()
+{
+    UndirectedGraph graph(8);
+
+    graph.addEdge(0, 1, 2);
+    graph.addEdge(0, 2, 4);
+    graph.addEdge(1, 4, 3);
+    graph.addEdge(2, 3, 2);
+    graph.addEdge(3, 1, 4);
+    graph.addEdge(4, 3, 3);
+
+    graph.findReachableVertices(0);
+
+    // Adding disjoint nodes to demonstrate they can't be reached
+    graph.addEdge(5, 6, 2);
+    graph.addEdge(7, 8, 3);
+
+    graph.findReachableVertices(5); // Should only show vertex 5
+    graph.findReachableVertices(7); // Should only show vertex 7
+
+    return 0;
+}
+
+==========================================
+Graph Implementation
+==========================================
+Graph Implementation.cpp
+#include <iostream>
+
+using namespace std;
+
+struct Node {
+    int vertex, weight;
+    Node* next;
+
+    Node(int v, int w) : vertex(v), weight(w), next(nullptr) {}
+};
+
+class UndirectedGraph {
+public:
+    UndirectedGraph(int numVertices) : N(numVertices) {
+        adjList = new Node*[N]();
+    }
+
+    void addEdge(int from, int to, int weight) {
+        Node* newNode = new Node(to, weight);
+        newNode->next = adjList[from];
+        adjList[from] = newNode;
+
+        // Add the reverse edge from 'to' to 'from'
+        Node* reverseNode = new Node(from, weight);
+        reverseNode->next = adjList[to];
+        adjList[to] = reverseNode;
+    }
+
+    void printAdjacencyList() {
+        cout << "Graph adjacency list:" << endl;
+        for (int i = 0; i < N; ++i) {
+            cout << i << " -> ";
+            Node* current = adjList[i];
+            while (current) {
+                cout << "(" << current->vertex << ", " << current->weight << ") -> ";
+                current = current->next;
+            }
+            cout << "nullptr" << endl;
+        }
+    }
+
+    ~UndirectedGraph() {
+        for (int i = 0; i < N; ++i) {
+            Node* current = adjList[i];
+            while (current) {
+                Node* temp = current;
+                current = current->next;
+                delete temp;
+            }
+        }
+        delete[] adjList;
+    }
+
+private:
+    int N;
+    Node** adjList;
+};
+
+int main() {
+    UndirectedGraph graph(6);
+
+    graph.addEdge(0, 1, 2);
+    graph.addEdge(0, 2, 4);
+    graph.addEdge(1, 4, 3);
+    graph.addEdge(2, 3, 2);
+    graph.addEdge(3, 1, 4);
+    graph.addEdge(4, 3, 3);
+
+    graph.printAdjacencyList();
+
+    return 0;
+}
+
+================================
+Graph Traversal -BFS & DFS
+=================================
+Graph Traversal.cpp
+#include <iostream>
+#include <queue>
+#include <stack>
+
+using namespace std;
+
+struct Node {
+    int vertex, weight;
+    Node* next;
+
+    Node(int v, int w) : vertex(v), weight(w), next(nullptr) {}
+};
+
+class UndirectedGraph {
+public:
+    UndirectedGraph(int numVertices) : N(numVertices) {
+        adjList = new Node*[N]();
+    }
+
+    void addEdge(int from, int to, int weight) {
+        Node* newNode = new Node(to, weight);
+        newNode->next = adjList[from];
+        adjList[from] = newNode;
+
+        // Add the reverse edge from 'to' to 'from'
+        Node* reverseNode = new Node(from, weight);
+        reverseNode->next = adjList[to];
+        adjList[to] = reverseNode;
+    }
+
+    void printAdjacencyList() {
+        cout << "Graph adjacency list:" << endl;
+        for (int i = 0; i < N; ++i) {
+            cout << i << " -> ";
+            Node* current = adjList[i];
+            while (current) {
+                cout << "(" << current->vertex << ", " << current->weight << ") -> ";
+                current = current->next;
+            }
+            cout << "nullptr" << endl;
+        }
+    }
+
+void DFS(int startVertex) {
+        bool visited[N] = {false};
+        stack<int> stack;
+
+        visited[startVertex] = true;
+        stack.push(startVertex);
+
+        cout << "DFS traversal starting from vertex " << startVertex << ": ";
+        while (!stack.empty()) {
+            int currentVertex = stack.top();
+            stack.pop();
+            cout << currentVertex << " ";
+
+            Node* currentNode = adjList[currentVertex];
+            while (currentNode) {
+                int neighbor = currentNode->vertex;
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    stack.push(neighbor);
+                }
+                currentNode = currentNode->next;
+            }
+        }
+        cout << endl;
+    }
+
+    void BFS(int startVertex) {
+        bool visited[N] = {false};
+        queue<int> queue;
+
+        visited[startVertex] = true;
+        queue.push(startVertex);
+
+        cout << "BFS traversal starting from vertex " << startVertex << ": ";
+        while (!queue.empty()) {
+            int currentVertex = queue.front();
+            queue.pop();
+            cout << currentVertex << " ";
+
+            Node* currentNode = adjList[currentVertex];
+            while (currentNode) {
+                int neighbor = currentNode->vertex;
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
+                currentNode = currentNode->next;
+            }
+        }
+        cout << endl;
+    }
+
+
+    ~UndirectedGraph() {
+        for (int i = 0; i < N; ++i) {
+            Node* current = adjList[i];
+            while (current) {
+                Node* temp = current;
+                current = current->next;
+                delete temp;
+            }
+        }
+        delete[] adjList;
+    }
+
+private:
+    int N;
+    Node** adjList;
+};
+
+int main() {
+    UndirectedGraph graph(6);
+
+    graph.addEdge(0, 1, 2);
+    graph.addEdge(0, 2, 4);
+    graph.addEdge(1, 4, 3);
+    graph.addEdge(2, 3, 2);
+    graph.addEdge(3, 1, 4);
+    graph.addEdge(4, 3, 3);
+
+    graph.printAdjacencyList();
+
+    graph.DFS(0); // Perform DFS starting from vertex 0
+    graph.BFS(0); // Perform BFS starting from vertex 0
+
+    return 0;
+}
+
+=================================================
+single pair shortest path
+=============================================
+single pair shortest path.cpp
+#include <iostream>
+#include <limits.h>
+using namespace std;
+
+#define V 9
+
+int minDistance(int dist[], bool sptSet[]) {
+    int min = INT_MAX, min_index;
+
+    for (int v = 0; v < V; v++)
+        if (!sptSet[v] && dist[v] <= min)
+            min = dist[v], min_index = v;
+
+    return min_index;
+}
+
+void printPath(int parent[], int j) {
+    if (parent[j] == -1)
+        return;
+
+    printPath(parent, parent[j]);
+
+    cout << j << " ";
+}
+
+void printSolution(int dist[], int parent[], int src, int dest) {
+    cout << "Shortest Path from " << src << " to " << dest << ": " << endl;
+    cout << "Vertex \t Distance \t Path" << endl;
+    for (int i = 0; i < V; i++) {
+        cout << i << " \t\t" << dist[i] << "\t" << src << " ";
+        printPath(parent, i);
+        cout << endl;
+    }
+}
+
+void dijkstra(int graph[V][V], int src, int dest) {
+    int dist[V];
+    bool sptSet[V];
+    int parent[V];
+
+    for (int i = 0; i < V; i++) {
+        dist[i] = INT_MAX;
+        sptSet[i] = false;
+        parent[src] = -1;
+    }
+
+    dist[src] = 0;
+
+    for (int count = 0; count < V - 1; count++) {
+        int u = minDistance(dist, sptSet);
+        sptSet[u] = true;
+
+        for (int v = 0; v < V; v++)
+            if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX && dist[u] + graph[u][v] < dist[v]) {
+                dist[v] = dist[u] + graph[u][v];
+                parent[v] = u;
+            }
+    }
+
+    printSolution(dist, parent, src, dest);
+}
+
+int main() {
+    int graph[V][V] = {{0, 4, 0, 0, 0, 0, 0, 8, 0},
+                       {4, 0, 8, 0, 0, 0, 0, 11, 0},
+                       {0, 8, 0, 7, 0, 4, 0, 0, 2},
+                       {0, 0, 7, 0, 9, 14, 0, 0, 0},
+                       {0, 0, 0, 9, 0, 10, 0, 0, 0},
+                       {0, 0, 4, 14, 10, 0, 2, 0, 0},
+                       {0, 0, 0, 0, 0, 2, 0, 1, 6},
+                       {8, 11, 0, 0, 0, 0, 1, 0, 7},
+                       {0, 0, 2, 0, 0, 0, 6, 7, 0}};
+
+    int source = 0;    // Hardcoded source vertex
+    int destination = 4;  // Hardcoded destination vertex
+
+    dijkstra(graph, source, destination);
 
     return 0;
 }
