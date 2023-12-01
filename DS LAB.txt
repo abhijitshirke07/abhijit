@@ -1,6 +1,6 @@
-=======================
+===================================================================================================================
 Implementation on stack
-=======================
+=====================================================================================================================
 #include <iostream>
 using namespace std;
 
@@ -67,9 +67,144 @@ int main() {
    return 0;
 }
 
-======================
+================================================================================================================
+infix to postfix $ Prefix
+================================================================================================================
+#include <iostream>
+#include <stack>
+#include <cctype>
+
+using namespace std;
+
+int astack[100], n = 100, top = -1;
+
+void push(int value) {
+    if (top >= n - 1)
+        cout << "Stack Overflow" << endl;
+    else {
+        top++;
+        astack[top] = value;
+        cout << "Inserted element is: " << value << "\n";
+    }
+}
+
+int pop() {
+    if (top <= -1)
+        cout << "Stack Underflow" << endl;
+    else {
+        int popped = astack[top];
+        cout << "The popped element is " << astack[top] << endl;
+        top--;
+        return popped;
+    }
+}
+
+int topnum() {
+    if (top >= 0) {
+        cout << "Top element is: " << astack[top] << "\n\n";
+        return astack[top];
+    } else {
+        cout << "Stack is empty";
+        return -1; // Return a default value indicating an empty stack
+    }
+}
+
+bool isOperator(char c) {
+    return (c == '+' || c == '-' || c == '*' || c == '/');
+}
+
+int getPrecedence(char op) {
+    if (op == '+' || op == '-')
+        return 1;
+    if (op == '*' || op == '/')
+        return 2;
+    return 0; // Default case for parentheses
+}
+
+string infixToPostfix(const string& infix) {
+    stack<char> operators;
+    string postfix = "";
+
+    for (char c : infix) {
+        if (isalnum(c)) {
+            postfix += c;
+        } else if (c == '(') {
+            operators.push(c);
+        } else if (c == ')') {
+            while (!operators.empty() && operators.top() != '(') {
+                postfix += operators.top();
+                operators.pop();
+            }
+            operators.pop();
+        } else if (isOperator(c)) {
+            while (!operators.empty() && getPrecedence(operators.top()) >= getPrecedence(c)) {
+                postfix += operators.top();
+                operators.pop();
+            }
+            operators.push(c);
+        }
+    }
+
+    while (!operators.empty()) {
+        postfix += operators.top();
+        operators.pop();
+    }
+
+    return postfix;
+}
+
+string infixToPrefix(const string& infix) {
+    stack<char> operators;
+    string prefix = "";
+
+    for (int i = infix.length() - 1; i >= 0; i--) {
+        char c = infix[i];
+
+        if (isalnum(c)) {
+            prefix = c + prefix;
+        } else if (c == ')') {
+            operators.push(c);
+        } else if (c == '(') {
+            while (!operators.empty() && operators.top() != ')') {
+                prefix = operators.top() + prefix;
+                operators.pop();
+            }
+            operators.pop();
+        } else if (isOperator(c)) {
+            while (!operators.empty() && getPrecedence(operators.top()) > getPrecedence(c)) {
+                prefix = operators.top() + prefix;
+                operators.pop();
+            }
+            operators.push(c);
+        }
+    }
+
+    while (!operators.empty()) {
+        prefix = operators.top() + prefix;
+        operators.pop();
+    }
+
+    return prefix;
+}
+
+int main() {
+    string infixExpression;
+    cout << "Enter an infix expression: ";
+    cin >> infixExpression;
+
+    string postfixExpression = infixToPostfix(infixExpression);
+    string prefixExpression = infixToPrefix(infixExpression);
+
+    cout << "Postfix expression: " << postfixExpression << endl;
+    cout << "Prefix expression: " << prefixExpression << endl;
+
+    return 0;
+}
+
+
+==============================================================================================================
 Evaluation of postfix
-======================
+=============================================================================================================
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -159,9 +294,9 @@ main(){
    cout <<postfixEvaluate(input);
 }
 
-==================
+================================================================================================================
 Linked List
-=================
+===============================================================================================================
 #include <stdlib.h>
 #include <iostream>
 
@@ -268,9 +403,9 @@ int main() {
    return 0;
 }
 
-=============
+==================================================================
 line Editor
-=============
+====================================================================
 #include <iostream>
 #include <string>
 
@@ -363,9 +498,9 @@ int main() {
 }
 
 
-=====================
+=================================================================================================
 fifo queue
-=====================
+=================================================================================================
 #include <iostream>
 using namespace std;
 struct node {
@@ -450,9 +585,9 @@ int main() {
 }
 
 
-================
+============================================================================
 bank queue
-================
+============================================================================
 #include <iostream>
 #include<string>
 using namespace std;
@@ -543,9 +678,9 @@ int main() {
 }
 
 
-================================
+=======================================================================
 Circular Queue
-===============================
+=======================================================================
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -645,9 +780,9 @@ int main()
 }
 
 
-=============================
+======================================================================================
 Round Robin queue
-===============================
+=======================================================================================
     #include <iostream>
     using namespace std;
 
@@ -881,9 +1016,9 @@ int main(){
 }
 
 
-=================================
+=====================================================================================
 TREE
-==============================
+====================================================================================
 #include <iostream>
 #include <iomanip>
 #include<string>
@@ -1026,9 +1161,9 @@ int main(){
 }
 
 
-=====================================
+============================================================================================
 BOOK BST by title as node value
-====================================
+============================================================================================
 #include <iostream>
 #include <iomanip>
 #include<string>
@@ -1192,9 +1327,9 @@ int main(){
 }
 
 
-=================================================================
+=======================================================================================
 Shortest Path
-=======================================
+=========================================================================================
 #include<iostream>
 #include<algorithm>
 
@@ -1261,9 +1396,9 @@ int main() {
     return 0;
 }
 
-====================================================
+=============================================================================================
 Use Hash Function
-=================================
+=======================================================================================
 #include <iostream>
 #include <list>
 
@@ -1317,9 +1452,9 @@ int main() {
     return 0;
 }
 
-==========================
+=====================================================================================
 file sorting
-===========================
+==================================================================================
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
