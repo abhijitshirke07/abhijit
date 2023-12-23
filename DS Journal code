@@ -21,23 +21,34 @@ matrix[i][j] = scanner.nextInt();
         } 
  
         // Display original matrix 
-        System.out.println("\nOriginal Matrix:");         displayMatrix(matrix); 
+        System.out.println("\nOriginal Matrix:");        
+displayMatrix(matrix); 
  
-        // Compute and display transpose         int[][] transposedMatrix = transposeMatrix(matrix);         System.out.println("\nTransposed Matrix:");         displayMatrix(transposedMatrix); 
+        // Compute and display transpose     
+int[][] transposedMatrix = transposeMatrix(matrix);    
+System.out.println("\nTransposed Matrix:");       
+displayMatrix(transposedMatrix); 
     } 
  
-    // Function to display a matrix     public static void displayMatrix(int[][] matrix) {         for (int i = 0; i < matrix.length; i++) {             for (int j = 0; j < matrix[0].length; j++) { 
+    // Function to display a matrix     
+public static void displayMatrix(int[][] matrix) {        
+for (int i = 0; i < matrix.length; i++) {            
+for (int j = 0; j < matrix[0].length; j++) { 
                 System.out.print(matrix[i][j] + " "); 
             } 
             System.out.println(); 
         } 
     } 
  
-    // Function to compute the transpose of a matrix     public static int[][] transposeMatrix(int[][] matrix) {         int rows = matrix.length; 
+    // Function to compute the transpose of a matrix   
+public static int[][] transposeMatrix(int[][] matrix) {    
+int rows = matrix.length; 
         int columns = matrix[0].length; 
         int[][] transposedMatrix = new int[columns][rows]; 
  
-        for (int i = 0; i < columns; i++) {             for (int j = 0; j < rows; j++) {                 transposedMatrix[i][j] = matrix[j][i]; 
+        for (int i = 0; i < columns; i++) {            
+for (int j = 0; j < rows; j++) {                
+transposedMatrix[i][j] = matrix[j][i]; 
             } 
         } 
  
@@ -47,31 +58,36 @@ matrix[i][j] = scanner.nextInt();
  
 Output: 
  
-  
-Q2. Write a program to demonstrate the use of    a) Package    
+****************************************************************************************************************************************************
+Q2. Write a program to demonstrate the use of  
+a) Package    
 b)	Interface    
 c)	abstract class    
  
 A) 
 // File: example/MyPackageClass.java package example; 
  
-public class MyPackageClass {     public void displayMessage() { 
+public class MyPackageClass {     
+public void displayMessage() { 
         System.out.println("Hello from MyPackageClass!"); 
     } 
 } 
 B) 
 // File: example/MyInterface.java package example; 
  
-public interface MyInterface {     void myMethod(); 
+public interface MyInterface {     
+void myMethod(); 
 } 
 C) 
 // File: example/MyAbstractClass.java package example; 
  
-public abstract class MyAbstractClass implements MyInterface {     public void commonMethod() { 
+public abstract class MyAbstractClass implements MyInterface {     
+public void commonMethod() { 
         System.out.println("This is a common method in MyAbstractClass."); 
     } 
  
-    // Abstract method from the interface     public abstract void myMethod(); 
+    // Abstract method from the interface    
+public abstract void myMethod(); 
 } 
  
 // File: MainProgram.java import example.*; 
@@ -79,23 +95,27 @@ public abstract class MyAbstractClass implements MyInterface {     public void c
 public class MainProgram { 
     public static void main(String[] args) { 
         // Using the package 
-        MyPackageClass myPackageObject = new MyPackageClass();         myPackageObject.displayMessage(); 
+        MyPackageClass myPackageObject = new MyPackageClass();        
+myPackageObject.displayMessage(); 
  
         // Using the abstract class 
-        MyAbstractClass myAbstractObject = new MyConcreteClass();         myAbstractObject.commonMethod();         myAbstractObject.myMethod(); 
+        MyAbstractClass myAbstractObject = new MyConcreteClass();        
+myAbstractObject.commonMethod();     
+myAbstractObject.myMethod(); 
     } 
 } 
  
 // File: example/MyConcreteClass.java package example; 
  
-public class MyConcreteClass extends MyAbstractClass {     public void myMethod() { 
+public class MyConcreteClass extends MyAbstractClass {   
+public void myMethod() { 
         System.out.println("Implementation of myMethod in MyConcreteClass.");     } 
 } 
  
 Output: 
  
   
- 
+****************************************************************************************************************************************************
 Q3. Write a program to demonstrate 
 a)	Operations performed on String    
 b)	Use of StringBuilder Class    
@@ -103,7 +123,8 @@ c)	Use of StringTokenizer Class
  
 a) 
  
-public class StringDemo2 {     public static void main(String args[]) 
+public class StringDemo2 {  
+public static void main(String args[]) 
     { 
     String strOb1="First String"; 
     String strOb2="Second String"; 
@@ -143,7 +164,7 @@ import java.util.*; public class stringtok {
 } 
 Output: 
   
- 
+**************************************************************************************************************************************************** 
 Q4. Write a program to demonstrate user defined exception.   
  import java.io.*; import java.util.*; 
  
@@ -162,50 +183,8 @@ InputStreamReader(System.in));
  	 	Scanner sc=new Scanner(System.in); 
  
 
- 
- 
-// 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-} 
-Output: 
- 	 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-} 	try { 
+
+try { 
 	 	System.out.print("Enter name: "); 
  	String name=br.readLine();  	String name=sc.next();  	for(int i=0;i<name.length();i++) 
 	 	{ 
@@ -222,12 +201,15 @@ catch(Exception ed)
 { 
 	 	ed.printStackTrace(); 
 } 
-15 
+}
+}
+
  
   
- 
-Q5. Write a program to create a thread using      a) Extending the Thread class     
-    b) Implementing Runnable interface.   
+**************************************************************************************************************************************************** 
+Q5. Write a program to create a thread using      
+a) Extending the Thread class     
+b) Implementing Runnable interface.   
  
 a) 
 class thread extends Thread 
@@ -271,8 +253,8 @@ public class RunnableExample {     public static void main(String args[]) {
 } 
  
 Output: 
- 
-  
+
+****************************************************************************************************************************************************
 Q6. Write a program to copy the contents of one file into another file in reverse direction. 
  
 import java.io.RandomAccessFile; 
@@ -306,7 +288,7 @@ public class reverse {
 Output: 
  
   
- 
+****************************************************************************************************************************************************
 Q7. Write a program to display the contents of a file. 
  
 import java.util.Scanner; import java.io.*; 
@@ -343,7 +325,7 @@ public class fileread
 Output: 
  
   
- 
+****************************************************************************************************************************************************
 Q8. Write a program to Create Calculator by using AWT. 
  
 import java.awt.*; import java.awt.event.*; 
@@ -448,8 +430,8 @@ public class calculator implements ActionListener{     int c,n;
  
  
 Output: 
-  
- 
+
+****************************************************************************************************************************************************
 Q9. Write a program to create a menu using AWT / Swing. 
  
 import javax.swing.*;     import java.awt.event.*;   
@@ -461,32 +443,7 @@ public class MenuExample implements ActionListener {
  	JTextArea ta;     MenuExample(){     f=new JFrame();      	cut=new JMenuItem("cut");      	copy=new JMenuItem("copy");      	paste=new JMenuItem("paste");      	selectAll=new JMenuItem("selectAll");      	cut.addActionListener(this);      	copy.addActionListener(this);      	paste.addActionListener(this);      	selectAll.addActionListener(this);      	mb=new JMenuBar();      	file=new JMenu("File");      	edit=new JMenu("Edit");      	help=new JMenu("Help");       	edit.add(cut);  	edit.add(copy);  	edit.add(paste);  	edit.add(selectAll);      	mb.add(file);  	mb.add(edit);  	mb.add(help);      	ta=new JTextArea();      	ta.setBounds(5,5,360,320);     
 f.add(mb); 
 f.add(ta);     
- 
-
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-} 
- 
- 
- 
- 
- 	f.setJMenuBar(mb);   
+f.setJMenuBar(mb);   
 f.setLayout(null);     
 f.setSize(400,400);     
 f.setVisible(true);     }      
@@ -497,10 +454,9 @@ if(e.getSource()==selectAll)     ta.selectAll();
 }      
 public static void main(String[] args) {         new MenuExample();     
 }     
-35 
-Output: 
-  
- 
+}
+
+**************************************************************************************************************************************************** 
 Q10. Write a program to Create Log in form by using AWT/Swing and JDBC. 
  
 import javax.swing.*; import java.awt.*; 
@@ -552,14 +508,7 @@ public class LoginFrame extends JFrame implements ActionListener {
   
 } 
  
- 
- 
- 
- 
- 
-Output: 
-  
- 
+ ****************************************************************************************************************************************************
 Q11. Write a program to demonstrate operations performed on ArrayList. 
  import java.util.ArrayList; import java.util.Iterator; 
  
@@ -595,9 +544,7 @@ public class ArrayListOperations {     public static void main(String[] args) {
         System.out.println("ArrayList after clearing all elements: " + numbersList);     } 
 } 
  
- 
-Output: 
-  
+****************************************************************************************************************************************************
 Q12. Write a program to demonstrate operations performed on LinkedList. 
  import java.util.LinkedList; import java.util.Iterator; 
  
@@ -639,7 +586,7 @@ public class LinkedListOperations {     public static void main(String[] args) {
  
 Output: 
   
- 
+ ****************************************************************************************************************************************************
 Q13. Write a JDBC program to Perform CRUD Operations on Oracle Database. (4 Different Programs) 
  
 A) Create(Insert) 
@@ -715,6 +662,7 @@ class AccountCloseApplication
             System.out.println ("account closed successfully");         st.close ();            con.close ();  
     }  
 } 
+****************************************************************************************************************************************************
 Q14. Write a program to Connect Java Application with MySQL Database. 
  
 public class MySQLConnectionDemo { 
@@ -751,6 +699,8 @@ public class MySQLConnectionDemo {
         } 
     } 
 }  
+
+****************************************************************************************************************************************************
 Q15. Write a servlet program to implement Get and Post methods. 
  
 Index.html 
@@ -782,7 +732,8 @@ Servlet3.java
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {         doPost(request, response); 
     } 
 } 
- 
+
+****************************************************************************************************************************************************
 Q16. Write a JSP program.   
  
 <%@ page contentType="text/html;charset=UTF-8" language="java" %> 
@@ -794,62 +745,12 @@ Q16. Write a JSP program.
     <h1>Hello, World! This is a simple JSP program.</h1> 
 </body> 
 </html> 
-Output : 
- 
   
  
  
  
-  INDEX 
-    Data Structures and Algorithms (IT11L) 
- 
- 
-Sr.No 	Date 	Title 	Page.no 	Teacher’s 
-sign 
-1. 	14/09/2023 	Write a JS program for insertion operations on Singly LinkedList 	 	 
-2. 	14/09/2023 	Write a JS program for insertion operations on Doubly LinkedList 	 	 
-3. 	20/09/2023 	Write a JS program to create a singly linked list and count total number of nodes in it and 
-display the result 	 	 
-4. 	20/09/2023 	Write a JS program for stack with array    implementation 	 
- 	 
-5. 	21/09/2023 	Write a JS program for array implementation of circular Queue for integers 	 	 
-6. 	21/09/2023 	Write a JS program to reverse a string using stack 	 	 
-7. 	27/09/2023 	Write a JS program for Doubly linked list-Sort the linked list in ascending order. 
-And display it 	 	 
-8. 	27/09/2023 	Write a JS program for Graph implementation and DFS graph traversals 	 	 
-9. 	4/10/2023 	Write a JS Program to print BFS traversal from a given source vertex 	 	 
-10. 	4/10/2023 	Write a JS program to Implement Min Heap 	 	 
-11. 	5/10/2023 	Write a JS program to Implement Max Heap 	 	 
-12. 	5/10/2023 	Write a JS program for implementation of 
-Hashing 	 	 
-13. 	18/10/2023 	Write a JS program Rain water Trapping (Practical based on Brute Force technique) 	 	 
-14. 	18/10/2023 	Write a JS program Jump Game.( Practical based on Greedy Algorithm) 	 	 
-15. 	19/10/2023 	Write a JS program for Binary 
-Search(practical based on Divide and Conquer technique) 	 	 
-16. 	19/10/2023 	Write a JS program for finding out power set(practical based on Backtracking) 	 	 
-17. 	25/10/2023 	Write a JS program for BST 	 	 
-18. 	25/10/2023 	Write a JS program for compute a^n where n is positive integer using fast power method 	 	 
-19. 	26/10/2023 	Write a JS program for finding GCD using 
-Euclidean algorithm 	 	 
-20. 	26/10/2023 	Write a JS program to create a Pascal’s 
-Triangle 	 	 
-21. 	1/11/2023 	Write a JS program Dijkstra shortest path algorithm using Prim’s Algorithm 	 	 
-22. 	1/11/2023 	Write JS program for sorting array using quick sort 	 	 
-23. 	2/11/2023 	Write JS program for staircase problem 	 	 
-24. 	2/11/2023 	Write JS program for tower of hanoi 	 	 
-25. 	8/11/2023 	Write JS program for powerset 	 	 
-26. 	8/11/2023 	Write JS program for binarysearch 	 	 
-27. 	9/11/2023 	Write JS program for Euclidian algorithm 	 	 
-28. 	9/11/2023 	Write JS program for fastpowering algorithm 	 	 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+****************************************************************************************************************************************************
+****************************************************************************************************************************************************
 Q1. 1.Write a JS program for insertion operations on Singly LinkedList  	Insert At Front 
   var head; class Node 
 { 
@@ -910,7 +811,7 @@ output :
  
  
   
- 
+****************************************************************************************************************************************************
 Q2. Write a JS program for insertion operations on Doubly LinkedList 
 1.	Insert At Front 
 2.	Insert At Middle 
@@ -962,11 +863,8 @@ var head;      class Node { constructor(d) {             this.data = d;         
         } 
     }              append(6);           push(7);         push(1);         append(4); 
         InsertAfter(head.next, 8);         InsertBefore(head.next.next, 5);         console.log("Created DLL is:<br/> ");         printlist(head); 
- 
-output : 
-   
- 
- 
+
+**************************************************************************************************************************************************** 
 Q3. . Write a JS program to create a singly linked list and count total number of nodes in it and display the result. 
  
 class Node 
@@ -988,7 +886,7 @@ var dll=new DoublyLinkedList(); dll.insertFirst(12); dll.insertFirst(53); dll.in
  
 output : 
   
-  
+****************************************************************************************************************************************************
 Q4. Write a JS program for stack with array implementation- 
 1.	To check is empty. 
 2.	To Peek. 
@@ -1008,10 +906,7 @@ class Stack
  
 var s1=new Stack(); console.log("isEmpty:"+s1.isEmpty()); s1.push(10); s1.push(20); s1.push(30); console.log("Print stack: "+s1.item); console.log("pop: "+s1.pop()); console.log("Peek(top) value: "+s1.peek()); console.log("\nPrint stack: "+s1.item); console.log("isEmpty:  "+s1.isEmpty()); console.log("pop: "+s1.pop()); console.log("\nPrint stack: "+s1.item); console.log("pop: "+s1.pop()); console.log("\nPrint stack: "+s1.item); console.log("isEmpty:  "+s1.isEmpty()); 
  
-output : 
-  
- 
- 
+****************************************************************************************************************************************************
 Q5. Write a JS program for array implementation of circular Queue for  integers-   1. Insert. 
 2.	Delete. 
 3.	Display. 
@@ -1040,7 +935,7 @@ var cq=new CirculerQueue(5); cq.enqueue(10); cq.enqueue(15); cq.enqueue(16); cq.
 output : 
      
   
- 
+ ****************************************************************************************************************************************************
 Q6. Write JS program to reverse a string using stack. 
  
 class revStack 
@@ -1053,7 +948,7 @@ class revStack
  
 output : 
   
- 
+ ****************************************************************************************************************************************************
 Q7. Write a JS program for Doubly linked list-Sort the linked list in ascending order. And display it. 
  
 class Node { 
@@ -1080,8 +975,8 @@ class Node {
      console.log("Original Doubly Linked List:");   doublyLinkedList.display(); 
      console.log("\nSorted Doubly Linked List:");   doublyLinkedList.sort();   doublyLinkedList.display(); 
  
-output : 
-  
+
+****************************************************************************************************************************************************
 Q8. Write a JS program for Graph implementation and DFS graph traversals. 
 class Graph{     constructor(v){         this.V=v;         this.adj=new Array(v);         for(let i=0;i<v;i++)         this.adj[i]=[]; 
     }     addEdge(v,w){         this.adj[v].push(w); 
@@ -1099,9 +994,9 @@ g.addEdge(2,0);
 g.addEdge(2,3); 
 g.addEdge(3,3); console.log("Following is Depth First Traversal  "+"(starting from vertex 2)\n"); g.DFS(2); 
  
-output : 
-  
- 
+
+
+ ****************************************************************************************************************************************************
 Q9. Write JS Program to print BFS traversal from a given source vertex. 
  
 class BFS {     constructor(v){         this.V=v;         this.adj=new Array(v);         for(let i=0;i<v;i++)         this.adj[i]=[]; 
@@ -1123,10 +1018,9 @@ g.addEdge(2,0);
 g.addEdge(2,3); 
 g.addEdge(3,3); 
 console.log("Following is Breadth First Traversal  "+"(starting from vertex 2)\n"); g.BFS(2); 
- 
-output: 
-  
- 
+
+
+****************************************************************************************************************************************************
 Q10. Write JS program to Implement Min Heap. 
 class minHeap {     constructor() {         this.heap = [];         this.elements = 0; 
  
@@ -1169,10 +1063,8 @@ arr = [12, 6, 8, 3, 16, 4, 27]; newheap.buildHeap(arr);
  
 newheap.removeMin(); console.log(newheap.getMin()); 
  
- 
-output : 
-  
- 
+
+****************************************************************************************************************************************************
 Q11. Write JS program to Implement Max Heap . 
  
 class maxHeap{     constructor()     {         this.heap=[];         this.elements=0; 
@@ -1211,9 +1103,9 @@ let heap = new maxHeap(); heap.insert(12); heap.insert(10); heap.insert(-10); he
 console.log(heap.getMax()); let newheap = new maxHeap(); 
 arr = [12, 6, 8, 3, 16, 4, 27]; newheap.buildHeap(arr); console.log(newheap.getMax()); newheap.removeMax(); console.log(newheap.getMax()); 
  
-output : 
+
   
- 
+**************************************************************************************************************************************************** 
 Q12. Write a JS program for implementation of Hashing. 
  
 class HashTable 
@@ -1226,9 +1118,9 @@ class HashTable
         } 
     } } const hashTable=new HashTable(); hashTable.setItem("bk101","Data structures algorithms"); hashTable.setItem("bk108","Data analytics"); hashTable.setItem("bk200","Cyber Security"); hashTable.setItem("bk259","Business Intelligence"); hashTable.setItem("bk330","S/W Development"); hashTable.getItem("bk101"); console.log(hashTable.getItem("bk101")); hashTable.getItem("bk108"); console.log(hashTable.getItem("bk108")); hashTable.getItem("bk200"); console.log(hashTable.getItem("bk200")); hashTable.getItem("bk259"); console.log(hashTable.getItem("bk259")); hashTable.getItem("bk330"); console.log(hashTable.getItem("bk330")); 
  
-output : 
-  
  
+  
+**************************************************************************************************************************************************** 
 Q13. . Write a JS program Rain water Trapping (Practical based on 
 Brute Force technique) 
 function maxWater(arr,n) 
@@ -1247,7 +1139,7 @@ let arr=[2,0,3,0,1,0,2]; let n=arr.length; console.log(maxWater(arr,n));
 output : 
  
   
- 
+ ****************************************************************************************************************************************************
 Q14. Write a JS program Jump Game.( Practical based on Greedy Algorithm). 
  
 function minJumps(n,Jumps) 
@@ -1265,7 +1157,7 @@ function minJumps(n,Jumps)
 output: 
  
   
- 
+ ****************************************************************************************************************************************************
 Q15. Write JS program for Binary Search(practical based on Divide and Conquer technique) 
  
 function binarySearch(arr,l,r,x) 
@@ -1276,7 +1168,7 @@ function binarySearch(arr,l,r,x)
 let arr=[1,3,5,7,8,9] let x=9 console.log(binarySearch(arr,0,arr.length-1,x)) 
  
   
- 
+**************************************************************************************************************************************************** 
 Q16. Write JS program for finding out power set(practical based on Backtracking) 
  
 function subset(arr) 
@@ -1292,7 +1184,7 @@ function backtrack(arr,subset,start)
 console.log(subset([1,2,3])) 
  
   
- 
+**************************************************************************************************************************************************** 
 Q17. Write JS program for BST. 
 function binarySearch(arr,l,r,x) 
 { 
@@ -1302,7 +1194,7 @@ function binarySearch(arr,l,r,x)
 let arr=[1,3,5,7,8,9] let x=9 console.log(binarySearch(arr,0,arr.length-1,x)) 
  
   
- 
+ ****************************************************************************************************************************************************
  Q18. Write JS program for compute a^n where n is positive integer using fast power method 
  
 function modular(base,exp,mod) 
@@ -1314,7 +1206,7 @@ function modular(base,exp,mod)
 } 
 console.log(modular(3,218,1000)) 
   
- 
+ ****************************************************************************************************************************************************
 Q19. Write JS program for finding GCD using Euclidean algorithm 
  
 function gcd(a,b) 
@@ -1323,7 +1215,7 @@ function gcd(a,b)
 } 
 var a=270,b=192 console.log("GCD of"+a+" and "+b+" = ",gcd(a,b)) 
  
-  
+****************************************************************************************************************************************************
 Q20. Write JS program to create a Pascal’s Triangle. 
  
 function PascalTriangle(numRows) 
@@ -1343,7 +1235,7 @@ function PascalTriangle(numRows)
 console.log(PascalTriangle(6)) 
  
   
- 
+****************************************************************************************************************************************************
 Q21. Write JS program Dijkstra shortest path algorithm using Prim’s Algorithm. 
  
 Dijkstra algorithm : 
@@ -1436,7 +1328,7 @@ class Graph {     constructor(vertices) {       this.vertices = vertices;       
    
 output: 
   
- 
+**************************************************************************************************************************************************** 
 Q22. Write JS program for sorting array using quick sort. 
  function quickSort(arr) {     if (arr.length <= 1) {       return arr; 
     }        const pivot = arr[0];     const left = [];     const right = []; 
@@ -1455,7 +1347,7 @@ output:
  
   
    
- 
+**************************************************************************************************************************************************** 
 Q23. Write JS program for staircase problem. 
  
 function fibo(n) 
@@ -1471,7 +1363,7 @@ console.log("The number of ways = ",count_ways(4))
 output: 
  
   
- 
+ ****************************************************************************************************************************************************
 Q24. Write JS program for tower of hanoi. 
  
 function towerOfHanoi(n,A,B,C) 
@@ -1483,7 +1375,7 @@ var n=3 towerOfHanoi(n,'A','C','B')
 output: 
   
  
- 
+ ****************************************************************************************************************************************************
 Q25. Write JS program for powerset. 
  function subset(arr) 
 { 
@@ -1497,7 +1389,7 @@ function backtrack(arr,subset,start)
 console.log(subset([1,2,3])) 
  
 output: 
-   
+ ****************************************************************************************************************************************************  
 Q26. Write JS program for binarysearch. 
  function binarySearch(arr,l,r,x) 
 { 
@@ -1509,7 +1401,7 @@ output:
  
   
  
- 
+**************************************************************************************************************************************************** 
 Q27. Write JS program for Euclidian algorithm. 
  function gcd(a,b) 
 { 
@@ -1521,7 +1413,7 @@ output:
  
   
  
- 
+ ****************************************************************************************************************************************************
 Q28. Write JS program for fastpowering algorithm. 
  
 function modular(base,exp,mod) 
