@@ -1,0 +1,593 @@
+Q1 write Java Program to accept two numbers through command line & display addition of that.
+
+public class P1 {
+public static void main(String[] args) { int a = Integer.parseInt(args[0]); int b = Integer.parseInt(args[1]); int sum = a + b;
+System.out.println("Sum of two numbers is: " + sum);
+}
+}
+
+
+Q2 write a Java program to accept a number through Command line & find reserve of that number.
+public class P2 {
+public static void main(String[] args) { int n = Integer.parseInt(args[0]); int reverse = 0;
+while (n != 0) {
+reverse = (reverse * 10) + n%10; n/=10;
+}
+System.out.println("Reverse of the number is: " + reverse);
+}
+}
+
+
+Q3 Write Java Code to define a student Class with roll No, name and class as data members. Write accept() and display() methods. And display details of 3 students.
+import java.util.Scanner;
+class Student { int rollNo;
+String name, className;
+Scanner scanner = new Scanner(System.in);
+public void accept() { System.out.print("Enter a Roll NO: "); rollNo = scanner.nextInt(); System.out.print("Enter Name: "); name = scanner.next(); System.out.print("Enter Class: "); className = scanner.next();
+ 
+}
+public void display() { System.out.println("Roll No: " + rollNo); System.out.println("Name: " + name); System.out.println("Class: " + className);
+}
+}
+public class P3 {
+public static void main(String[] args) { var student1 = new Student();
+var student2 = new Student(); var student3 = new Student();
+
+student1.accept(); student2.accept(); student3.accept();
+student1.display(); student2.display(); student3.display();
+}
+}
+
+
+Q4 Write Java program For Student with data member roll no, name and class as data members use parameterized constructor to initialize 3 objects of that class. Write a display() method to display details of students.
+class Student { int rollNo;
+String name, className;
+
+Student(int rollNo, String name, String className) { this.rollNo = rollNo;
+this.name = name; this.className = className;
+}
+
+public void display() {
+System.out.println(rollNo + " " + name + " " + className);
+}
+}
+public class P4 {
+public static void main(String args[]) {
+var student1 = new Student(64, "Seth", "MCA");
+var student2 = new Student(68, "Style Bender", "MCA"); var student3 = new Student(69, "Taylor", "MCA");
+ 
+student1.display(); student2.display(); student3.display();
+}}
+Q5 Write a program to define Class employee with data member name & salary create an array objects for employee class which store the information for 5 employees & add display them accordingly.
+import java.util.Scanner;
+
+class Employee { int salary; String name;
+Scanner scanner = new Scanner(System.in);
+public void accept() { System.out.print("Enter Name: "); name = scanner.nextLine(); System.out.print("Enter Salary: "); salary = scanner.nextInt();
+}
+public void display() {
+System.out.println(name + " with salary " + salary);
+}
+}
+public class P5 {
+public static void main(String[] args) { Employee[] emp = new Employee[5];
+for (int i = 0; i < emp.length; i++) { emp[i] = new Employee(); emp[i].accept();
+}
+for (Employee value: emp) { value.display();
+}
+}
+}
+
+
+Q6 Crete a Class number with a single data member. Write following methods and call them appropriately.
+1)	is prime () it checks whether number is prime or not.
+ 
+2)	is Even () - it checks whether given number is even or odd
+
+3)	is positive () - Checks given number is positive or negative
+
+4)	Factorial () - Find that Factorial of given number
+
+5)	Cube () - find the cube of given number.
+import java.util.Scanner; class Number {
+int n;
+
+public void accept() {
+Scanner scanner = new Scanner(System.in); System.out.print("Enter a number: ");
+n = scanner.nextInt(); scanner.close();
+}
+public void isPrime() {
+for (int i = 2; i < n; i++) { if (n%i==0) {
+System.out.println(n + " is not a Prime Number."); return;
+}
+}
+System.out.println(n + " is a Prime Number.");
+}
+
+public void isEven() {
+if (n%2==0) System.out.println(n + " is an Even Number"); else System.out.println(n + " is not an Even Number");
+}
+public void isPositive() {
+if (n > 0) System.out.println(n + " is a Positive Number"); else System.out.println(n + " is a Negative Number");
+}
+
+public void factorial() { int result = 1;
+for (int i = 2; i <= n; i++) { result *= i;
+}
+System.out.println("Factorial of " + n + " is " + result);
+}
+public void cube() {
+int result = n * n * n;
+System.out.println("Cube of " + n + " is " + result);
+ 
+}
+public void display() { isPrime(); isEven(); isPositive(); factorial(); cube();
+}
+}
+public class P6 {
+public static void main(String[] args) { Number no1 = new Number(); no1.accept();
+no1.display();
+}
+}
+
+
+Q7 Define a class employee having data members id, name and Salary. Define default and Parameterized constructor. Define a class manager with data member bonus define its default and Parameterized constructor define appropriate getter and setter method in both classes.
+Create n object of manager and display total salary of these manages
+
+class Employee { int id, salary; String name;
+
+Employee() {}
+Employee(int id, String name, int salary) { this.id = id;
+this.name = name; this.salary = salary;
+}
+public void setId(int id) { this.id = id; } public int getId() { return id; }
+public void setSalary(int salary) { this.salary = salary; } public int getSalary() { return salary; }
+public void setName(String name) { this.name = name; } public String getName() { return name; }
+}
+
+class Manager extends Employee { float bonus;
+Manager() {}
+ 
+Manager(int id, String name, int salary) { super(id, name, salary);
+}
+public void setBonus(float bonus) { this.bonus = bonus; } public float getBonus() { return bonus; }
+public void display() { setBonus((0.04f) * getSalary());
+System.out.println("Manager " + getId()); System.out.println("Name: " + getName()); System.out.println("Salary " + getSalary() + ", and bonus: " +
+getBonus());
+System.out.println("Total Salary: " + (getSalary() + getBonus()));
+}
+}
+public class P7 {
+public static void main(String[] args) {
+Manager m1 = new Manager(1, "Seth", 666_666); Manager m2 = new Manager();
+
+m1.display();
+m2.setId(2); m2.setName("Style Bender"); m2.setSalary(999_999); m2.display();
+}
+}
+
+
+Q8 Create a Class number with one integer data member write different method with the Same name with varying argument
+1)	Display () - display welcome message on screen
+
+2)	display (int String) - it will display past string for given number of times.
+
+3)	display (int string) - display to welcome
+
+class Number { int n;
+public void display() { System.out.println("Welcome " + n);
+}
+public void display(int n, String message) { for (int i = 0; i < n; i++) {
+ 
+System.out.println(message);
+}
+}
+public void display(int n, String message, String startingMessage) { System.out.println(startingMessage);
+for (int i = 0; i < n; i++) { System.out.println(message);
+}
+}
+}
+public class P8 {
+public static void main(String[] args) { Number no = new Number();
+no.n = 6; no.display();
+no.display(3, "Hola Amigos"); no.display(4, "Hello", "Bienvenido");
+}
+}
+
+
+Q9 Define in interface operation which has method area () and Volume() interface contain a Constant π with value 3:142. Create a class circle with radius as data member class cylinder with radius and height as data member. These 2 classes with implement the above created interface & calculate the area and Volume appropriately based on shape of on object.
+interface Operation{ float PI = 3.142f; void Area();
+void Volume();
+}
+class Circle implements Operation { float radius;
+public void Area() {
+float area = PI * radius * radius; System.out.println("Area of Circle is " + area);
+}
+public void Volume() {}
+}
+
+class Cylinder implements Operation { float radius, height;
+public void Area() {
+float area = 2 * PI * radius * (height + radius); System.out.println("Area of Cylinder is: " + area);
+}
+public void Volume() {
+ 
+float volume = PI * radius * radius * height; System.out.println("Volume of Cylinder is: " + volume);
+}
+}
+
+public class P9 {
+public static void main(String[] args) { var c1 = new Circle();
+c1.radius = 5; c1.Area();
+var cy1 = new Cylinder(); cy1.radius = 5;
+cy1.height = 10; cy1.Area();
+cy1.Volume();
+}
+}
+
+
+Q10 write Java program to handle exception accept two integer from user and perform arithmetic operations like multiplication, division and Find the result of mathematical expression 16/(2*a - a * b)
+import java.util.InputMismatchException; import java.util.Scanner;
+public class P10 {
+public static void main(String[] args) { Scanner scanner = new Scanner(System.in); try {
+int a = scanner.nextInt(); int b = scanner.nextInt();
+int result = 16 / (2 * a - a * b); System.out.println(result);
+} catch (InputMismatchException e) { System.out.println("Value mismatched.");
+} catch (ArithmeticException e) { System.out.println("Division by zero");
+}
+}
+}
+
+
+Q11 Write a Java program to accept a no from user if no is negative then throw user define exception, number negative exception and handle it carefully.
+import java.util.Scanner;
+ 
+class NegativeNumber extends Exception { NegativeNumber() {}
+@Override
+public String toString() { return "Number is Negative";
+}
+}
+public class P11 {
+public static void main(String[] args) { Scanner scanner = new Scanner(System.in); try {
+int n = scanner.nextInt();
+if (n < 0) throw new NegativeNumber(); System.out.println(n);
+} catch (NegativeNumber e) { System.out.println(e);
+}
+}
+}
+
+
+Q12 Write a Java program which accepts two integer. Write two method multiplication & division where this two methods throws Ioexception and and ArithmeticException appropriately.
+import java.io.IOException; import java.util.Scanner;
+
+public class P12 {
+public static int multiplication(int a, int b) throws IOException { if (b==0) {
+throw new IOException("Number Cannot be zero");
+}
+return a*b;
+}
+public static int division(int a, int b) throws ArithmeticException { if (b==0) {
+throw new ArithmeticException("Can't divide by zero");
+}
+return a/b;
+}
+public static void main(String[] args) { Scanner scanner = new Scanner(System.in); System.out.print("Enter number 1: "); int a = scanner.nextInt(); System.out.print("Enter number 2: "); int b = scanner.nextInt();
+try {
+int result = multiplication(a, b); System.out.println(result);
+} catch (IOException e) {
+ 
+System.out.println("IOException: " + e.getMessage());
+}
+try {
+int result = division(a, b); System.out.println(result);
+} catch (ArithmeticException e) { System.out.println("ArithmeticException: " + e.getMessage());
+}
+}
+}
+
+
+Q13 write a Java program to read n strings into array list & display it in reverse order.
+
+import java.util.ArrayList; import java.util.Collections; import java.util.Scanner;
+
+public class P13 {
+public static void main(String[] args) { Scanner scanner = new Scanner(System.in);
+System.out.print("Enter number of strings to accept: "); int n = scanner.nextInt();
+ArrayList<String> arr = new ArrayList<>(n);
+for (int i = 0; i < n; i++) { System.out.print("Enter String: "); String str = scanner.next(); arr.add(str);
+}
+System.out.println("Initial ArrayList " + arr.toString()); Collections.reverse(arr);
+System.out.println("After Reverse " + arr.toString());
+}
+}
+
+
+Q14 write a Java program to perform various operations on Array class.
+import java.util.Arrays; public class P14 {
+public static void main(String[] args) {
+int[] arr1 = {10, 20, 30, 40, 50, 60, 70, 80, 90};
+int[] arr2 = {10, 20, 30};
+int value = 80;
+System.out.println("List of Array " + Arrays.toString(arr1));
+ 
+System.out.println("Binary Search index " + Arrays.binarySearch(arr1, value));
+System.out.println("Binary Search index " + Arrays.binarySearch(arr1, 1, 5, 40));
+System.out.println("Compare Arrays " + Arrays.compare(arr1,
+arr2));
+}
+}
+
+
+Q15 To Construct linked list containing names of Colors, red, blue orange. Perform following operation on it
+1)	Display List using List Iterator
+
+2)	Display List in reverse order.
+
+3)	Create 2nd list with color names white § black I insert list at given position in the first list
+import java.util.*; public class P15 {
+public static void main(String[] args) { LinkedList<String> colorList = new LinkedList<>(); LinkedList<String> secondList = new LinkedList<>();
+colorList.add("red"); colorList.add("blue"); colorList.add("yellow"); colorList.add("orange");
+
+secondList.add("white"); secondList.add("black");
+ListIterator<String> i = colorList.listIterator(); while (i.hasNext()) {
+System.out.println(i.next());
+}
+while (i.hasPrevious()) { System.out.println(i.previous());
+}
+System.out.println("Second list: " + secondList); colorList.addAll(2, secondList); System.out.println(colorList);
+}
+}
+ 
+Q16 Write a Java program to accept 'n' numbers from user & store them in appropriately Collection.
+Condition:
+
+1)	Collection should not repeat number.
+
+2)	Display given collection in sorted order using appropriate method form Collection Framework
+import java.util.*; public class P16 {
+public static void main(String[] args) { Scanner scanner = new Scanner(System.in);
+System.out.print("Enter number of elements to store: "); int n = scanner.nextInt();
+Set<Integer> set = new HashSet<>();
+for (int i = 0; i < n; i++) { System.out.print("Enter element: "); set.add(scanner.nextInt());
+}
+System.out.println(set);
+}
+}
+
+
+Q17 Write a Java program to display current date & time using various formats.
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+public class P17 {
+public static void main(String[] args) { System.out.println(java.time.LocalTime.now()); System.out.println(java.time.LocalDate.now()); System.out.println(java.time.Clock.systemUTC().instant()); System.out.println(new java.util.Date());
+DateTimeFormatter dff = DateTimeFormatter.ofPattern("dd/MM/yyyy"); LocalDateTime dt = LocalDateTime.now(); System.out.println(dff.format(dt));
+}
+}
+
+
+Q18 Write a Java program to demonstrate various legacy methods of Vector class,
+ 
+addelement(), get(), Contain(). Size(), set Size (), removeElement() :
+import java.util.Vector; public class P18 {
+public static void main(String[] args) { Vector<String> v1 = new Vector<>();
+
+v1.addElement("A");
+v1.addElement("B");
+v1.addElement("C"); System.out.println(v1); System.out.println(v1.get(1));
+
+if (v1.contains("C")) { System.out.println("Vector Contains C");
+} else System.out.println("Vector doesn't contains C"); System.out.println("Size of Vector is " + v1.size());
+v1.setSize(5); System.out.println(v1);
+v1.removeElement("C"); System.out.println(v1);
+}
+}
+
+
+Q19 write a Java program to match the value enter by user against the pattern.
+
+1)	Mobile number
+
+2)	E mail Address
+
+3)	MCA Registration
+
+4)	Define your own pattern
+
+import java.util.Scanner; import java.util.regex.Matcher; import java.util.regex.Pattern;
+public class P19 {
+public static boolean parse(String parse, String value) { Pattern pattern = Pattern.compile(parse,
+Pattern.CASE_INSENSITIVE);
+Matcher matcher = pattern.matcher(value); return matcher.matches();
+ 
+}
+public static void main(String[] args) { Scanner scanner = new Scanner(System.in); System.out.print("Enter Phone Number: "); String phoneNo = scanner.next(); System.out.print("Enter Email: ");
+String email = scanner.next(); System.out.print("MCA Registration\nUsername:"); String username = scanner.next(); System.out.print("Password:");
+String password = scanner.next();
+if (parse("\\d{10}", phoneNo)) { System.out.println("Phone number is valid");
+} else System.out.println("Invalid Phone Number");
+
+if (parse("^[A-Z0-9]+@[A-Z]+\\.[A-Z]{2,6}$", email)) { System.out.println("Email is valid");
+} else System.out.println("Invalid Email");
+if (parse("^[a-zA-Z]{3,10}", username)) { System.out.println("Username is valid");
+} else System.out.println("Invalid Username");
+if (parse("^[a-zA-Z0-9.@$_]{3,12}", password)) { System.out.println("Password is valid");
+} else System.out.println("Invalid Password");
+}
+}
+
+
+Q20 Write a Java program to design following UI.
+import javax.swing.*; public class P20 {
+public static void main(String[] args) {
+JFrame f1 = new JFrame("Registration from for MCA"); f1.setSize(500, 500);
+JLabel l1 = new JLabel("Username"); l1.setBounds(30, 100, 100, 30); f1.add(l1);
+JLabel l2 = new JLabel("Password"); l2.setBounds(30, 150, 100, 30); f1.add(l2);
+JTextField t1 = new JTextField(); t1.setBounds(120, 100, 200, 30); t1.setEnabled(true);
+f1.add(t1);
+JTextField t2 = new JTextField(); t2.setBounds(120, 150, 200, 30);
+ 
+t2.setEnabled(true); f1.add(t2);
+JButton b1 = new JButton("Login"); b1.setBounds(120, 200, 80, 50); f1.add(b1);
+JButton b2 = new JButton("Registration"); b2.setBounds(240, 200, 120, 50); f1.add(b2);
+f1.setLayout(null); f1.setVisible(true);
+}
+}
+
+
+Q21 Write a Java program using Button
+
+import java.awt.*;
+import java.awt.event.ActionEvent; import java.awt.event.ActionListener; import java.awt.event.WindowAdapter; import java.awt.event.WindowEvent;
+class MyFrame extends Frame implements ActionListener { Button b1, b2, b3;
+MyFrame() {
+b1 = new Button("red"); b2 = new Button("green"); b3 = new Button("blue"); add(b1);
+add(b2);
+add(b3); b1.addActionListener(this); b2.addActionListener(this); b3.addActionListener(this);
+}
+@Override
+public void actionPerformed(ActionEvent actionEvent) { if (actionEvent.getActionCommand().equals("red"))
+setBackground(new Color(255, 0, 0));
+if (actionEvent.getActionCommand().equals("green")) setBackground(new Color(0, 255, 0));
+if (actionEvent.getActionCommand().equals("blue")) setBackground(new Color(0, 0, 255));
+}
+}
+public class P21 {
+public static void main(String[] args) {
+
+MyFrame myFrame = new MyFrame(); myFrame.setSize(400, 400);
+ 
+myFrame.setTitle("Event Handling Program"); myFrame.setVisible(true); myFrame.setLayout(new FlowLayout()); myFrame.addWindowListener(new WindowAdapter() {
+@Override
+public void windowClosing(WindowEvent e) { System.exit(0);
+}
+});
+}
+}
+
+
+Q22 write a Java program using CheckBox.
+
+import java.awt.*; import java.awt.event.*;
+
+class MyFrame extends Frame { List l;
+MyFrame() {
+l = new List(2, true); l.add("Boxing");
+l.add("Muay Thai");
+l.add("BJJ");
+l.add("Sambo");
+l.add("Krav Maga"); add(l);
+}
+}
+public class P22 {
+public static void main(String[] args) { MyFrame myFrame = new MyFrame(); myFrame.setSize(400, 400); myFrame.setTitle("Event Handling Program"); myFrame.setVisible(true); myFrame.setLayout(new FlowLayout());
+myFrame.addWindowListener(new WindowAdapter() { @Override
+public void windowClosing(WindowEvent e) { System.exit(0);
+}
+});
+}
+}
+
+
+Q23 Write a Java program using Choice Box.
+
+import java.awt.*; import java.awt.event.*;
+ 
+class MyFrame extends Frame{ Checkbox m, f;
+MyFrame() {
+m = new Checkbox("Male", true); f = new Checkbox("Female"); add(m);
+add(f);
+}
+}
+public class P23 {
+public static void main(String[] args) { MyFrame myFrame = new MyFrame(); myFrame.setSize(400, 400); myFrame.setTitle("Event Handling Program"); myFrame.setVisible(true); myFrame.setLayout(new FlowLayout());
+myFrame.addWindowListener(new WindowAdapter() { @Override
+public void windowClosing(WindowEvent e) { System.exit(0);
+}
+});
+}
+}
+
+
+Q24 write a Java program using GridLayout.
+
+import java.awt.*;
+class MyFrame extends Frame { Button b1, b2, b3, b4, b5; MyFrame() {
+setLayout(new GridLayout(2, 2, 20, 20)); b1 = new Button("Boxing");
+b2 = new Button("Muay Thai"); b3 = new Button("BJJ");
+b4 = new Button("Sambo");
+b5 = new Button("Krav Maga"); add(b1);add(b2);add(b3);add(b4);add(b5);
+}
+}
+public class P24 {
+public static void main(String[] args) { MyFrame frame = new MyFrame(); frame.setSize(400, 400); frame.setTitle("Event Handling Program"); frame.setVisible(true);
+}
+}
+ 
+Q25 write a Java program using FlowLayout
+
+import javax.swing.*; import java.awt.*;
+class FlowLayoutExample { JFrame frameObj; FlowLayoutExample() {
+frameObj = new JFrame(); JButton b1 = new JButton("1"); JButton b2 = new JButton("2"); JButton b3 = new JButton("3"); JButton b4 = new JButton("4"); JButton b5 = new JButton("5"); JButton b6 = new JButton("6");
+
+frameObj.add(b1); frameObj.add(b2); frameObj.add(b3); frameObj.add(b4); frameObj.add(b5); frameObj.add(b6);
+frameObj.setLayout(new FlowLayout()); frameObj.setSize(300, 300); frameObj.setVisible(true);
+}
+}
+public class P25 {
+public static void main(String[] args) { new FlowLayoutExample();
+}
+}
+Q26 Write a Java program using CardLayout.
+
+import java.awt.*; import java.awt.event.*;
+class CardLayoutExample extends Frame implements ActionListener { CardLayout card = new CardLayout(20, 20); CardLayoutExample() {
+setLayout(card);
+Button btnFirst = new Button("First"); Button btnSecond = new Button("Second"); Button btnThird = new Button("Third"); add(btnFirst, "Card 1");
+add(btnSecond, "Card 2");
+add(btnThird, "Card 3"); btnFirst.addActionListener(this); btnSecond.addActionListener(this); btnThird.addActionListener(this);
+}
+@Override
+public void actionPerformed(ActionEvent actionEvent) { card.next(this);
+}
+ 
+}
+public class P26 {
+public static void main(String[] args) { CardLayoutExample frame = new CardLayoutExample(); frame.setSize(220, 150); frame.setResizable(false);
+frame.setVisible(true); frame.setTitle("Card Layout");
+frame.addWindowListener(new WindowAdapter() { @Override
+public void windowClosing(WindowEvent e) { System.exit(0);
+}
+});
+}
+}
+
+
+Q27 Write a Java program to create 3 threads will point different table of numbers
+
+class A extends Thread { public void run() {
+for (int i = 1; i <= 10; i++) { System.out.println("\tFrom thread A: i = " + i * 2);
+}
+System.out.println("exit from A");
+}
+}
+class B extends Thread { public void run() {
+for (int i = 1; i <= 10; i++) { System.out.println("\tFrom thread B: i = " + i * 2);
+}
+System.out.println("exit from B");
+}
+}
+class C extends Thread { public void run() {
+for (int i = 1; i <= 10; i++) { System.out.println("\tFrom thread C: i = " + i * 2);
+}
+System.out.println("exit from C");
+}
+}
+public class P27 {
+public static void main(String[] args) { new A().start();
+new B().start();
+new C().start();
+}
+ 
+}
+
